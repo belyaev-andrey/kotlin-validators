@@ -5,12 +5,15 @@ import org.hibernate.validator.constraints.Length;
 
 import java.util.Objects;
 
-public class UserClass {
+public class UserClassFields {
 
+    @Length(min = 3, max = 10)
     private String name;
+
+    @Email
     private String email;
 
-    public UserClass(@Length(min = 3, max = 10) String name, @Email String email) {
+    public UserClassFields(String name, String email) {
         this.name = name;
         this.email = email;
     }
@@ -35,7 +38,7 @@ public class UserClass {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UserClass userClass = (UserClass) o;
+        UserClassFields userClass = (UserClassFields) o;
         return Objects.equals(name, userClass.name) && Objects.equals(email, userClass.email);
     }
 
